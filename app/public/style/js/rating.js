@@ -29,11 +29,11 @@ $(function ()
             {
                 if (result.status === true)
                 {
-                    page.alertReload('Thanks! Your rating has been saved!');
+                    main.alert.show('Thanks! Your rating has been saved!', 'success', true);
                 }
                 else
                 {
-                    page.alertReload('Sorry! You have already rated this product!');
+                    main.alert.show('Sorry! You have already rated this product!', 'danger');
                 }
             },
             error: function (e)

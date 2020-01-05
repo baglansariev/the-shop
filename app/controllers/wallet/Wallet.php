@@ -29,7 +29,7 @@
 
         public function pay($expenses)
         {
-            if ($this->hasMoney() && $this->getMoney() > 0)
+            if ($this->hasMoney() && $this->getMoney() > $expenses)
             {
                 $this->putMoney( $this->getMoney() - $expenses );
                 return true;

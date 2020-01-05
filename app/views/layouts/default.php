@@ -26,13 +26,33 @@
         <script src="<?php echo $js; ?>"></script>
         <?php endforeach; ?>
         <?php endif; ?>
-        <script src="/app/public/style/js/page.js"></script>
-        <script src="/app/public/style/js/cart.js"></script>
-        <script src="/app/public/style/js/checkout.js"></script>
+        <script src="/app/public/style/js/cart/cartRender.js"></script>
+        <script src="/app/public/style/js/cart/cart.js"></script>
+        <script src="/app/public/style/js/cart/checkout.js"></script>
         <script src="/app/public/style/js/currency.js"></script>
+        <script src="/app/public/style/js/main.js"></script>
     </head>
     <body>
         <?php if( isset($content) ) echo $content; ?>
+
+        <!--  Shows alert messages  -->
+        <section class="layout-alert">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert-status d-flex flex-column justify-content-center align-items-center">
+                            <div class="alert-icon">
+                                <i class="fas"></i>
+                            </div>
+                            <div class="alert-message">
+                                <p class="message"></p>
+                            </div>
+                            <div class="alert-buttons d-flex justify-content-between flex-wrap"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <script src="/app/public/style/bootstrap/bootstrap.js"></script>
         <script src="/app/public/style/bootstrap/bootstrap.bundle.min.js"></script>

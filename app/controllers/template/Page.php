@@ -21,6 +21,7 @@
         public function home()
         {
             $data['title'] = 'Home Page';
+            // Adds scripts to the <head>
             $data['head_script'][] = '/app/public/style/js/rating.js';
 
             $products = (new Product) -> getList();
@@ -34,7 +35,7 @@
                     $data['products'][$key]['title'] = $product['title'];
                     $data['products'][$key]['price'] = $product['price'];
                     $data['products'][$key]['image'] = $product['image'];
-                    $data['products'][$key]['avg_rating'] = ceil( $rating->getRating($product['id'])['average'] );
+                    $data['products'][$key]['avg_rating'] = number_format($rating->getRating($product['id'])['average'], 1);
                 }
                 $data['rating_scale'] = $rating->scale;
             }
@@ -48,6 +49,7 @@
         public function cart()
         {
             $data['title'] = 'Cart';
+            // Adds css file
             $data['stylesheet'][] = '/app/public/style/css/cart.css';
 
             $cart = new Cart(new Session, new Product);

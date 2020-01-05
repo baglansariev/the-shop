@@ -1,9 +1,7 @@
 <?php
-    namespace app\controllers;
-    use app\controllers\cart\Cart;
-    use app\controllers\cart\Checkout;
+    namespace app\controllers\cart;
+
     use app\controllers\product\Product;
-    use app\controllers\product\Rating;
     use app\controllers\wallet\Wallet;
     use core\lib\Request;
     use core\lib\Response;
@@ -25,20 +23,6 @@
             $this->cart = new Cart( new Session, new Product );
         }
 
-        public function rating()
-        {
-            if ( $this->request->has('product_id') && $this->request->has('rating') )
-            {
-                if ( (new Rating) -> setRating((int)$this->request->post('product_id'), (int)$this->request->post('rating')) )
-                {
-                    $this->response->outputJson(['status' => true]);
-                    exit;
-                }
-                $this->response->outputJson(['status' => false]);
-                exit;
-            }
-        }
-
         public function cartAdd()
         {
             if ( $this->request->has('product_id') && $this->request->has('quantity') )
@@ -54,6 +38,22 @@
             if ( $this->request->has('product_id') )
             {
                 $this->cart->remove( (int)$this->request->post('product_id') );
+                $json = [
+                    'status' => true,
+                    'cart_items' => $this->cart->getItems(),
+                    'cart_items_count' => $this->cart->getItemsCount() ?? '0',
+                    'sum' => $this->cart->getItemsSum() ?? '0'
+                ];
+                $this->response->outputJson($json);
+                exit;
+            }
+        }
+
+        public function changeItemQuantity()
+        {
+            if ( $this->request->has('product_id') && $this->request->has('quantity') )
+            {
+                $this->cart->changeItemsQuantity( (int)$this->request->post('product_id'), (int)$this->request->post('quantity') );
                 $json = [
                     'status' => true,
                     'cart_items' => $this->cart->getItems(),

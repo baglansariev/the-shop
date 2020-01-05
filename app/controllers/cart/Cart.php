@@ -8,7 +8,6 @@
     {
         private $session;
         private $products;
-        private $sum = 0;
 
         public function __construct(Session $session, Product $product)
         {
@@ -128,6 +127,28 @@
                     }
                 }
                 $this->session->set('cart_items', $items_list);
+            }
+        }
+
+        public function changeItemsQuantity($product_id, $quantity)
+        {
+            if ( $this->session->has('cart_items') )
+            {
+                $items_list = [];
+                $items_count = 0;
+                foreach ($this->session->get('cart_items') as $key => $item)
+                {
+                    $items_list[$key]['id'] = $item['id'];
+                    $items_list[$key]['quantity'] = $item['quantity'];
+                    if ($item['id'] == $product_id)
+                    {
+                        $items_list[$key]['quantity'] = $quantity;
+                    }
+                    $items_count = $items_count + $items_list[$key]['quantity'];
+                }
+                // Changes cart items in session
+                $this->session->set('cart_items', $items_list);
+                $this->session->set('cart_items_quantity', $items_count);
             }
         }
 

@@ -29,11 +29,17 @@
                                         <span>Price:</span>
                                         <span>$<?php echo $product['price'] ?></span>
                                     </p>
+                                    <!--  Rating stars  -->
                                     <ul class="card-rating d-flex" title="<?php echo 'Average rating: ' . $product['avg_rating']; ?>">
                                         <?php for ($i = 1; $i <= $rating_scale; $i++): ?>
                                             <?php if ($product['avg_rating'] >= $i): ?>
+                                                <!--  Shows full rated star  -->
                                                 <li class="rating-item current-active" data-val="<?php echo $i; ?>" data-id="<?php echo $product['id'] ?>"><i class="fas fa-star"></i></li>
+                                            <?php elseif (($product['avg_rating']) < $i && ceil( $product['avg_rating'] ) == $i ): ?>
+                                                <!--  Shows half rated star  -->
+                                                <li class="rating-item current-active" data-val="<?php echo $i; ?>" data-id="<?php echo $product['id'] ?>"><i class="fas fa-star-half-alt"></i></li>
                                             <?php else: ?>
+                                                <!--  Sows star without rating  -->
                                                 <li class="rating-item" data-val="<?php echo $i; ?>" data-id="<?php echo $product['id'] ?>"><i class="fas fa-star"></i></li>
                                             <?php endif; ?>
                                         <?php endfor; ?>
@@ -51,3 +57,11 @@
         </div>
     </section>
 </main>
+
+<script>
+
+    // $('.rating-item').on('mouseover', function (e) {
+    //     console.log(e.offsetX);
+    // });
+
+</script>

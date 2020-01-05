@@ -11,7 +11,7 @@ let checkout = {
                 if (result.status === true)
                 {
                     // Changes TOTAL in the checkout block on the cart page
-                    page.renderTotal( currency.format(result.total) );
+                    cartRender.renderTotal( currency.format(result.total) );
                 }
             },
             error: function (err) {
@@ -32,11 +32,11 @@ let checkout = {
                 success: function (result) {
                     if (result.status === true)
                     {
-                        page.alertReload('Thank you for your purchaces!');
+                       main.alert.show('Thank you for your purchaces!', 'success', true);
                     }
                     else
                     {
-                        page.alertReload('You don\'t have enough money to buy these products!');
+                        main.alert.show('You don\'t have enough money to buy these products!', 'danger');
                     }
                 },
                 error: function (err) {
@@ -46,7 +46,7 @@ let checkout = {
         }
         else
         {
-            alert('Please choose the transport type!');
+            main.alert.show('Please choose the transport type!', 'warning');
         }
     }
 };

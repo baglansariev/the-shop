@@ -1,3 +1,6 @@
+body {
+    position: relative;
+}
 header {
     box-shadow: 0 2px 7px 2px #cdcdcd;
     position: relative;
@@ -72,4 +75,40 @@ a, a:hover {
 }
 .card-rating li.active, .card-rating li.current-active {
     color: #ffcd40;
+}
+.layout-alert {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 9;
+    display: none;
+}
+.layout-alert .success, .layout-alert .danger, .layout-alert .cart-success, .layout-alert .cart-danger {
+    margin-top: 50px;
+}
+.alert-icon {
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+.layout-alert .success .alert-icon, .layout-alert .cart-success .alert-icon {
+    color: #28a745;
+}
+.layout-alert .danger .alert-icon {
+    color: #dc3545;
+}
+.layout-alert .warning .alert-icon {
+    color: #ffcd40;
+}
+.alert-message {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.alert-buttons button {
+    padding: 10px 30px;
+    margin-right: 10px;
 }

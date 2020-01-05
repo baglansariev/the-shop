@@ -30,7 +30,10 @@
                                         </div>
                                     </td>
                                     <td>$<?php echo $item['price']; ?></td>
-                                    <td><?php echo $item['quantity']; ?></td>
+                                    <td>
+                                        <input type="number" value="<?php echo $item['quantity']; ?>" id="itemQuantity_<?php echo $item['id']; ?>">
+                                        <button type="button" class="btn btn-sm btn-success" title="Change quantity" onclick="cart.changeQuantity( <?php echo $item['id']; ?>, '#itemQuantity_<?php echo $item["id"]; ?>' )"><i class="fas fa-sync-alt"></i></button>
+                                    </td>
                                     <td>$<?php echo $item['item_total_price']; ?></td>
                                     <td>
                                         <button type="button" class="btn btn-sm btn-danger" onclick="cart.remove( <?php echo $item['id']; ?> )"><i class="fas fa-times"></i></button>

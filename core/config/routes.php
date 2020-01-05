@@ -9,23 +9,27 @@
             'action' => 'cart',
         ],
         '/cart-add' => [
-            'controller' => 'AjaxController',
+            'controller' => 'cart\AjaxController',
             'action' => 'cartAdd',
         ],
         '/cart-remove' => [
-            'controller' => 'AjaxController',
+            'controller' => 'cart\AjaxController',
             'action' => 'cartRemove',
         ],
+        '/cart-change-quantity' => [
+            'controller' => 'cart\AjaxController',
+            'action' => 'changeItemQuantity',
+        ],
         '/checkout-total' => [
-            'controller' => 'AjaxController',
+            'controller' => 'cart\AjaxController',
             'action' => 'getTotal',
         ],
         '/checkout-buy' => [
-            'controller' => 'AjaxController',
+            'controller' => 'cart\AjaxController',
             'action' => 'buy',
         ],
         '/set-rating' => [
-            'controller' => 'AjaxController',
+            'controller' => 'product\AjaxController',
             'action' => 'rating',
         ],
     ];
